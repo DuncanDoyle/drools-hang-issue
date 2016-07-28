@@ -19,7 +19,7 @@ import org.kie.api.runtime.KieRuntime;
 import org.kie.api.runtime.KieSession;
 import org.kie.internal.runtime.StatefulKnowledgeSession;
 
-public class ProcessTestWithoutJBPM {
+public class ProcessWithoutJBPMTest {
 
 	
 	@Test
