@@ -1,0 +1,47 @@
+package org.jboss.ddoyle.bpms.test;
+
+import org.jboss.ddoyle.bpms.test.Input;
+
+declare  SimpleFact 
+end
+
+declare  AnotherFact  
+end
+
+rule "setup rule"
+    ruleflow-group "test-group"
+    salience 1000
+when
+    not (SimpleFact())
+    not (AnotherFact())
+then
+    insert(new SimpleFact());
+	insert(new AnotherFact());
+    System.out.println("Inserting facts into memory");
+end
+
+rule "rule_1"
+    no-loop
+    ruleflow-group "test-group"
+when
+    $f : SimpleFact()  
+    $h : AnotherFact()  
+    $input : Input(  )  
+    eval(true)
+then
+	System.out.println("Firing rule 1");
+end
+
+rule "rule_2"
+    //no-loop
+    ruleflow-group "test-group"
+when
+    $f : SimpleFact(  )  
+    $h : AnotherFact(  )  
+    $input : Input(  )  
+then
+	System.out.println("Firing rule 2");
+end
+
+
+
